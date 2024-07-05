@@ -1,0 +1,8 @@
+path:hover {
+    fill: blueviolet;
+}
+
+div {
+    display: flex;
+    justify-content: center;
+}
