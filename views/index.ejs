@@ -8,13 +8,16 @@
 </head>
 <body>
     <% if (locals.countries) { %>
-        <h1> Keep guessing </h1>
+        <h1> You've named <%= guessed %> out of <%= total %> countries so far </h1>
     <% } else { %>
         <h1> Hello </h1>
     <% } %>
     <form action="/submit" method="post">
         <input type="text" name="country">
         <input type="submit">
+    </form>
+    <form action="/reset" method="post">
+        <button>Restart</button>
     </form>
     <div class="container">
         <?xml version="1.0" encoding="UTF-8" standalone="no"?>
@@ -1058,7 +1061,7 @@
     <script>
         const guessedCountries = "<%= countries %>".split(",");
         guessedCountries.forEach((code) => {
-            document.getElementById(code).style.fill("maroon");
+            document.getElementById(code).style.fill = "maroon";
         });
     </script>
 </body>
