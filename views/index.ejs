@@ -7,13 +7,13 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <% if (locals.input) { %>
-        <h1><%= input %></h1>
+    <% if (locals.countries) { %>
+        <h1> Keep guessing </h1>
     <% } else { %>
         <h1> Hello </h1>
     <% } %>
     <form action="/submit" method="post">
-        <input type="text" name="username">
+        <input type="text" name="country">
         <input type="submit">
     </form>
     <div class="container">
@@ -1055,6 +1055,11 @@
                 id="ZW" />
         </svg>
     </div>
-
+    <script>
+        const guessedCountries = "<%= countries %>".split(",");
+        guessedCountries.forEach((code) => {
+            document.getElementById(code).style.fill("maroon");
+        });
+    </script>
 </body>
 </html>
