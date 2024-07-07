@@ -1,8 +1,55 @@
 path:hover {
-    fill: blueviolet;
+    fill: #D38FFF;
 }
 
-div {
+path {
+    stroke: #000000;
+    stroke-width: 0.05rem;
+}
+
+#forms {
+    display: inline-flex;
+}
+
+#countries {
     display: flex;
     justify-content: center;
+}
+
+svg {
+    fill: #616161;
+}
+
+h1 {
+    color: white;
+    font-family: "Playwrite AU VIC", cursive;
+    font-optical-sizing: auto;
+    font-style: normal;
+}
+
+body {
+    background-color: #121212;
+}
+
+button {
+    border-radius: 10px;
+    border: none;
+    padding: 10px 20px;
+    margin: 5px;
+}
+
+#submit {
+    background-color: #BBDA98;
+    font-weight: bold;
+}
+
+#restart {
+    background-color: #DB5858;
+    font-weight: bold;
+}
+
+input {
+    border: 3px solid #4C4FDC;
+    padding: 10px;
+    border-radius: 6px;
 }
