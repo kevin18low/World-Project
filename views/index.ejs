@@ -17,7 +17,8 @@
     <% } %>
     <div id="forms">
         <form id="guess" action="/submit" method="post">
-            <input id="input" type="text" name="country" autofocus="autofocus">
+            <input id="input" type="text" size="50" name="country" autofocus="autofocus" 
+            autofocus placeholder="<%= locals.error ? error :  'Enter country name'%>">
             <button id="submit">Submit</button>
         </form>
         <form action="/reset" method="post">

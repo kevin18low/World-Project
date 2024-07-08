@@ -48,7 +48,7 @@ button {
     font-weight: bold;
 }
 
-input {
+#input {
     border: 3px solid #4C4FDC;
     padding: 10px;
     border-radius: 6px;
