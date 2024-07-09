@@ -9,6 +9,7 @@ path {
 
 #forms {
     display: inline-flex;
+    grid-area: main;
 }
 
 #countries {
@@ -23,17 +24,24 @@ svg {
 h1 {
     color: white;
     margin-left: 1rem;
+    margin-bottom: 0;
     font-family: "Playwrite AU VIC", cursive;
     font-optical-sizing: auto;
+    font-size: 24px;
     font-style: normal;
+    grid-area: header;
 }
 
 #timer {
+    width: fit-content;
     color: white;
     margin-left: 1rem;
+    margin-right: 10px;
     font-family: "Playwrite AU VIC", cursive;
     font-optical-sizing: auto;
     font-style: normal;
+    grid-area: sidebar;
+    justify-self: end;
 }
 
 body {
@@ -62,4 +70,12 @@ button {
     padding: 10px;
     margin-left: 1rem;
     border-radius: 6px;
+}
+
+#text-content {
+    display: grid;
+    grid-template-rows: 75px 50px;
+    grid-template-areas: 
+    "header header . sidebar"
+    "main main . sidebar";
 }
