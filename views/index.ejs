@@ -19,17 +19,27 @@
             <h2 id="timer"></h2>
         </div>
         <script>
-            document.getElementById("streak-button").addEventListener("click", () => {
+            document.getElementById("streak-start-button").addEventListener("click", () => {
                 let time = 10;
                 var timer = setInterval(() => {
                     document.getElementById("timer").innerHTML = time;
                     if (time == 0) {
                         clearInterval(timer);
                         document.getElementById("timer").innerHTML = "Game over!";
+                        resetCountries();
                     }
                     time--;
                 }, 1000);
             })
+
+        function resetCountries() {
+            fetch("/reset", {
+                method: "POST"
+            });
+            setTimeout(() => {
+                window.location.href = "/";
+            }, 5000);
+        }    
         </script>
         
         <div id="forms">
