@@ -32,6 +32,19 @@ h1 {
     grid-area: header;
 }
 
+.streak-container {
+    display: flex;
+    justify-content: end;
+    grid-area: sidebar;
+}
+
+#streak-start-button {
+    height: fit-content;
+    margin-top: 20px;
+    font-weight: bold;
+    background-color: greenyellow;
+}
+
 #timer {
     width: fit-content;
     color: white;
@@ -55,7 +68,7 @@ button {
     margin: 5px;
 }
 
-#submit {
+#submit-guess {
     background-color: #BBDA98;
     font-weight: bold;
 }
@@ -65,17 +78,17 @@ button {
     font-weight: bold;
 }
 
-#input {
+#country-guess {
     border: 3px solid #4C4FDC;
     padding: 10px;
     margin-left: 1rem;
     border-radius: 6px;
 }
 
-#text-content {
+#country-count {
     display: grid;
     grid-template-rows: 75px 50px;
     grid-template-areas: 
     "header header . sidebar"
-    "main main . sidebar";
+    "main main . .";
 }

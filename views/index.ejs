@@ -10,30 +10,32 @@
     <link href="https://fonts.googleapis.com/css2?family=Playwrite+AU+VIC:wght@100..400&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div id="text-content" class="container">
+    <div id="country-count" class="container">
         <% if (locals.countries) { %>
             <h1> You've named <%= guessed %> out of <%= total %> countries so far... Keep guessing! </h1>
-        <% } else { %>
-            <h1></h1>
-        <% } %>
-    
-        <h2 id="timer"></h2>
+        <% } %>        
+        <div class="streak-container">
+            <button id="streak-start-button">Start</button>
+            <h2 id="timer"></h2>
+        </div>
         <script>
-            let time = 10;
-            var timer = setInterval(() => {
-                document.getElementById("timer").innerHTML = time;
-                if (time == 0) {
-                    clearInterval(timer);
-                    document.getElementById("timer").innerHTML = "Game over! You ran out of time";
-                }
-                time--;
-            }, 1000);
+            document.getElementById("streak-button").addEventListener("click", () => {
+                let time = 10;
+                var timer = setInterval(() => {
+                    document.getElementById("timer").innerHTML = time;
+                    if (time == 0) {
+                        clearInterval(timer);
+                        document.getElementById("timer").innerHTML = "Game over!";
+                    }
+                    time--;
+                }, 1000);
+            })
         </script>
         
         <div id="forms">
-            <form id="guess" action="/submit" method="post">
-                <input id="input" type="text" size="50" name="country" autofocus placeholder="<%= locals.error ? error :  'Enter a country name'%>">
-                <button id="submit">Submit</button>
+            <form id="user-guess" action="/submit" method="post">
+                <input id="country-guess" type="text" size="50" name="country" autocomplete="off" autofocus placeholder="<%= locals.error ? error :  'Enter a country name'%>">
+                <button id="submit-guess">Submit</button>
             </form>
             <form action="/reset" method="post">
                 <button id="restart">Restart</button>
