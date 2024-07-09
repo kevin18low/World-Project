@@ -1,35 +1,39 @@
-path:hover {
-    fill: #D38FFF;
-}
-
-path {
-    stroke: #000000;
-    stroke-width: 0.05rem;
-}
-
 #forms {
     display: inline-flex;
     grid-area: main;
 }
 
+#country-container {
+    display: grid;
+    grid-template-areas: 
+    "body panel"
+    "body panel";
+    margin-top: 1rem;
+}
+
 #countries {
     display: flex;
     justify-content: center;
-    margin-top: 1rem;
-}
-svg {
-    fill: #616161;
+    grid-area: body;
 }
 
-h1 {
-    color: white;
-    margin-left: 1rem;
-    margin-bottom: 0;
-    font-family: "Playwrite AU VIC", cursive;
-    font-optical-sizing: auto;
-    font-size: 24px;
-    font-style: normal;
-    grid-area: header;
+#game-panel {
+    grid-area: panel;
+    display: block;
+}
+
+.gamemode {
+    height: fit-content;
+    width: 90%;
+    font-weight: bold;
+}
+
+#classic {
+    background-color: #A4E9F0;
+}
+
+#hotstreak {
+    background-color: #F0185B;
 }
 
 .streak-container {
@@ -49,16 +53,14 @@ h1 {
     width: fit-content;
     color: white;
     margin-left: 1rem;
-    margin-right: 10px;
+    margin-right: 1rem;
+    margin-top: 5px;
     font-family: "Playwrite AU VIC", cursive;
     font-optical-sizing: auto;
     font-style: normal;
+    font-size: 36px;
     grid-area: sidebar;
     justify-self: end;
-}
-
-body {
-    background-color: #121212;
 }
 
 button {
@@ -66,16 +68,6 @@ button {
     border: none;
     padding: 10px 20px;
     margin: 5px;
-}
-
-#submit-guess {
-    background-color: #BBDA98;
-    font-weight: bold;
-}
-
-#restart {
-    background-color: #DB5858;
-    font-weight: bold;
 }
 
 #country-guess {
@@ -91,4 +83,46 @@ button {
     grid-template-areas: 
     "header header . sidebar"
     "main main . .";
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+h1 {
+    color: white;
+    margin-left: 1rem;
+    margin-bottom: 0;
+    font-family: "Playwrite AU VIC", cursive;
+    font-optical-sizing: auto;
+    font-size: 24px;
+    font-style: normal;
+    grid-area: header;
+}
+
+body {
+    background-color: #121212;
+}
+
+svg {
+    fill: #616161;
+}
+
+path:hover {
+    fill: #D38FFF;
+}
+
+path {
+    stroke: #000000;
+    stroke-width: 0.05rem;
+}
+
+#submit-guess {
+    background-color: #BBDA98;
+    font-weight: bold;
+}
+
+#restart {
+    background-color: #DB5858;
+    font-weight: bold;
 }
