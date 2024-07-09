@@ -14,14 +14,23 @@ path {
 #countries {
     display: flex;
     justify-content: center;
+    margin-top: 1rem;
 }
-
 svg {
     fill: #616161;
 }
 
 h1 {
     color: white;
+    margin-left: 1rem;
+    font-family: "Playwrite AU VIC", cursive;
+    font-optical-sizing: auto;
+    font-style: normal;
+}
+
+#timer {
+    color: white;
+    margin-left: 1rem;
     font-family: "Playwrite AU VIC", cursive;
     font-optical-sizing: auto;
     font-style: normal;
@@ -51,5 +60,6 @@ button {
 #input {
     border: 3px solid #4C4FDC;
     padding: 10px;
+    margin-left: 1rem;
     border-radius: 6px;
 }

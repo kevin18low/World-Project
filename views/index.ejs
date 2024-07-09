@@ -15,6 +15,20 @@
     <% } else { %>
         <h1></h1>
     <% } %>
+
+    <h2 id="timer"></h2>
+    <script>
+        let time = 10;
+        var timer = setInterval(() => {
+            document.getElementById("timer").innerHTML = time;
+            if (time == 0) {
+                clearInterval(timer);
+                document.getElementById("timer").innerHTML = "Game over! You ran out of time";
+            }
+            time--;
+        }, 1000);
+    </script>
+
     <div id="forms">
         <form id="guess" action="/submit" method="post">
             <input id="input" type="text" size="50" name="country" autofocus placeholder="<%= locals.error ? error :  'Enter a country name'%>">
@@ -1067,11 +1081,11 @@
         const guessedCountries = "<%= countries %>".split(",");
         guessedCountries.forEach((code) => {
             document.getElementById(code).style.fill = "#769AFF";
-            document.getElementById("input").placeholder ="Nice!";
-            setTimeout(() => {
-                document.getElementById("input").placeholder ="Enter a country name";
-            }, 750)
         });
+        document.getElementById("input").placeholder ="Nice!";
+        setTimeout(() => {
+            document.getElementById("input").placeholder ="Enter a country name";
+        }, 750);
     </script>
 </body>
 </html>
