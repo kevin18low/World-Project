@@ -1,4 +1,6 @@
 #forms {
+    position: fixed;
+    top: 55px;
     display: inline-flex;
     grid-area: main;
 }
@@ -38,7 +40,14 @@
     background-color: #F0185B;
 }
 
+#timer-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 #streak-start-button {
+    width: 90%;
     height: fit-content;
     margin-top: 20px;
     font-weight: bold;
@@ -66,13 +75,12 @@ button {
 #country-guess {
     border: 3px solid #4C4FDC;
     padding: 10px;
-    margin-left: 1rem;
     border-radius: 6px;
 }
 
 #main-container {
     display: grid;
-    grid-template-rows: 75px 50px;
+    grid-template-rows: 50px 50px auto;
     grid-template-areas: 
     "header header sidebar"
     "main main sidebar"
@@ -84,8 +92,9 @@ button {
 }
 
 h1 {
+    position: fixed;
     color: white;
-    margin-left: 1rem;
+    margin-top: 0;
     margin-bottom: 0;
     font-family: "Playwrite AU VIC", cursive;
     font-optical-sizing: auto;
