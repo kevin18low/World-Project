@@ -1054,10 +1054,11 @@
         </div> 
         
         <div id="game-panel">
-            <h2 id="timer"></h2>
-            <button id="streak-start-button" onclick="startTimer()">Start</button>
             <button id="classic" class="gamemode">Classic</button>
             <button id="hotstreak" class="gamemode">HotStreak</button>
+            <h2 id="timer"></h2>
+            <button id="streak-start-button" onclick="startTimer()">Start</button>
+            <h2 id="score">Score: <%= guessed %></h2>
         </div>
 
         <div id="forms">
@@ -1076,10 +1077,6 @@
         guessedCountries.forEach((code) => {
             document.getElementById(code).style.fill = "#769AFF";
         });
-        document.getElementById("input").placeholder ="Nice!";
-        setTimeout(() => {
-            document.getElementById("input").placeholder ="Enter a country name";
-        }, 750);
 
         function startTimer() {
                 const startButton = document.getElementById("streak-start-button");

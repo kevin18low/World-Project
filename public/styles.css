@@ -120,3 +120,14 @@ path {
     background-color: #DB5858;
     font-weight: bold;
 }
+
+#score {
+    color: white;
+    margin-bottom: 1rem;
+    font-family: "Playwrite AU VIC", cursive;
+    font-optical-sizing: auto;
+    font-size: 24px;
+    font-style: normal;
+    grid-area: sidebar;
+    align-self: center;
+}
