@@ -10,57 +10,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Playwrite+AU+VIC:wght@100..400&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div id="country-count" class="container">
+    <div id="main-container" class="container">
         <% if (locals.countries) { %>
             <h1> You've named <%= guessed %> out of <%= total %> countries so far... Keep guessing! </h1>
-        <% } %>        
-        <div class="streak-container">
-            <button id="streak-start-button">Start</button>
-            <h2 id="timer"></h2>
-        </div>
-        <script>
-            const startButton = document.getElementById("streak-start-button");
-            const timer = document.getElementById("timer");
-            startButton.addEventListener("click", () => {
-                startButton.classList.toggle("hidden");
-                let time = 10;
-                var countdown = setInterval(() => {
-                    timer.innerHTML = time;
-                    if (time == 0) {
-                        clearInterval(countdown);
-                        timer.innerHTML = "Game over!";
-                        resetCountries();
-                    }
-                    time--;
-                }, 1000);
-            })
-
-            function resetCountries() {
-                fetch("/reset", {
-                    method: "POST"
-                });
-                setTimeout(() => {
-                    window.location.href = "/";
-                    startButton.classList.toggle("hidden");
-                }, 5000);
-            }    
-        </script>
-        
-        <div id="forms">
-            <form id="user-guess" action="/submit" method="post">
-                <input id="country-guess" type="text" size="50" name="country" autocomplete="off" autofocus placeholder="<%= locals.error ? error :  'Enter a country name'%>">
-                <button id="submit-guess">Submit</button>
-            </form>
-            <form action="/reset" method="post">
-                <button id="restart">Restart</button>
-            </form>
-        </div>
-    </div>
-
-    <div id="country-container" class="container">
+        <% } %>
         <?xml version="1.0" encoding="UTF-8" standalone="no"?>
         <!-- Created for MapSVG plugin: http://mapsvg.com -->
-        <div id="countries">
+        <div id="map">
             <svg
             xmlns:mapsvg="http://mapsvg.com"
             xmlns:dc="http://purl.org/dc/elements/1.1/"
@@ -1098,10 +1054,23 @@
         </div> 
         
         <div id="game-panel">
+            <h2 id="timer"></h2>
+            <button id="streak-start-button" onclick="startTimer()">Start</button>
             <button id="classic" class="gamemode">Classic</button>
             <button id="hotstreak" class="gamemode">HotStreak</button>
         </div>
+
+        <div id="forms">
+            <form id="user-guess" action="/submit" method="post">
+                <input id="country-guess" type="text" size="50" name="country" autocomplete="off" autofocus placeholder="<%= locals.error ? error :  'Enter a country name'%>">
+                <button id="submit-guess">Submit</button>
+            </form>
+            <form action="/reset" method="post">
+                <button id="restart">Restart</button>
+            </form>
+        </div>
     </div>
+
     <script>
         const guessedCountries = "<%= countries %>".split(",");
         guessedCountries.forEach((code) => {
@@ -1111,6 +1080,32 @@
         setTimeout(() => {
             document.getElementById("input").placeholder ="Enter a country name";
         }, 750);
+
+        function startTimer() {
+                const startButton = document.getElementById("streak-start-button");
+                const timer = document.getElementById("timer");
+                startButton.classList.toggle("hidden");
+                let time = 10;
+                var countdown = setInterval(() => {
+                    timer.innerHTML = time;
+                    if (time == 0) {
+                        clearInterval(countdown);
+                        timer.innerHTML = "Game over!";
+                        resetCountries();
+                    }
+                    time--;
+                }, 1000);
+            }
+
+        function resetCountries() {
+            fetch("/reset", {
+                method: "POST"
+            });
+            setTimeout(() => {
+                window.location.href = "/";
+                startButton.classList.toggle("hidden");
+            }, 3000);
+        }
     </script>
 </body>
 </html>

@@ -11,21 +11,23 @@
     margin-top: 1rem;
 }
 
-#countries {
+#map {
     display: flex;
     justify-content: center;
-    grid-area: body;
+    grid-area: map;
 }
 
 #game-panel {
-    grid-area: panel;
-    display: block;
+    grid-area: sidebar;
+    display: flex;
+    flex-direction: column;
 }
 
 .gamemode {
     height: fit-content;
     width: 90%;
     font-weight: bold;
+    align-self: center;
 }
 
 #classic {
@@ -34,12 +36,6 @@
 
 #hotstreak {
     background-color: #F0185B;
-}
-
-.streak-container {
-    display: flex;
-    justify-content: end;
-    grid-area: sidebar;
 }
 
 #streak-start-button {
@@ -52,15 +48,12 @@
 #timer {
     width: fit-content;
     color: white;
-    margin-left: 1rem;
-    margin-right: 1rem;
-    margin-top: 5px;
     font-family: "Playwrite AU VIC", cursive;
     font-optical-sizing: auto;
     font-style: normal;
-    font-size: 36px;
+    font-size: 24px;
     grid-area: sidebar;
-    justify-self: end;
+    align-self: center;
 }
 
 button {
@@ -77,12 +70,13 @@ button {
     border-radius: 6px;
 }
 
-#country-count {
+#main-container {
     display: grid;
     grid-template-rows: 75px 50px;
     grid-template-areas: 
-    "header header . sidebar"
-    "main main . .";
+    "header header sidebar"
+    "main main sidebar"
+    "map map sidebar";
 }
 
 .hidden {
