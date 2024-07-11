@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HotStreak</title>
+    <link rel="stylesheet" href="intros.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playwrite+AU+VIC:wght@100..400&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="main" class="container">
+        <% if (locals.mode && mode === "hotstreak") { %>
+            <p class="intro">
+                Get ready for HotStreak!<br><br>
+                You have 10 seconds to make a valid country guess. Every time you guess correctly, the timer
+                resets. If the tier hits 0, the game will end and your progress will be reset.
+                Correctly guessed countries will be highlighted on the map and will increase your score.<br><br>
+                Good luck!
+            </p>
+        <% } else { %>
+            <p class="intro">
+                This is Classic mode!<br><br>
+                Test your knowledge and take as much time as you need. See if you can name all the countries in the world!
+                Correctly guessed countries will be highlighted on the map and will increase your score.<br><br>
+                Good luck!
+            </p>
+            <form id="classic-start" action="/" method="get">
+                <button>Start</button>
+            </form>
+        <% } %>
+        
+    </div>
+</body>
+</html>

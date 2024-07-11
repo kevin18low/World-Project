@@ -1,3 +1,7 @@
+* {
+    font-family: "Playwrite AU VIC", cursive;
+}
+
 #forms {
     position: fixed;
     top: 55px;
@@ -28,15 +32,15 @@
 .gamemode {
     height: fit-content;
     width: 90%;
-    font-weight: bold;
     align-self: center;
+    font-weight: bold;
 }
 
-#classic {
+#classic-button {
     background-color: #A4E9F0;
 }
 
-#hotstreak {
+#hotstreak-button {
     background-color: #F0185B;
 }
 
@@ -57,9 +61,6 @@
 #timer {
     width: fit-content;
     color: white;
-    font-family: "Playwrite AU VIC", cursive;
-    font-optical-sizing: auto;
-    font-style: normal;
     font-size: 24px;
     grid-area: sidebar;
     align-self: center;
@@ -76,6 +77,7 @@ button {
     border: 3px solid #4C4FDC;
     padding: 10px;
     border-radius: 6px;
+    height: 20px;
 }
 
 #main-container {
@@ -96,10 +98,7 @@ h1 {
     color: white;
     margin-top: 0;
     margin-bottom: 0;
-    font-family: "Playwrite AU VIC", cursive;
-    font-optical-sizing: auto;
     font-size: 24px;
-    font-style: normal;
     grid-area: header;
 }
 
@@ -132,11 +131,9 @@ path {
 
 #score {
     color: white;
+    margin-top: 0;
     margin-bottom: 1rem;
-    font-family: "Playwrite AU VIC", cursive;
-    font-optical-sizing: auto;
     font-size: 24px;
-    font-style: normal;
     grid-area: sidebar;
     align-self: center;
 }
