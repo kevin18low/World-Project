@@ -29,16 +29,7 @@
         
         <div id="game-panel">
             <h2 id="score">Score: <%= guessed %></h2>
-            <form id="classic" action="/classic" method="get">
-                <button id="classic-button" class="gamemode">Classic</button>
-            </form>
-            <form id="hotstreak" action="/hotstreak" method="get">
-                <button id="hotstreak-button" class="gamemode">HotStreak</button>
-            </form>
-            <div id="timer-container">
-                <h2 id="timer"></h2>
-                <button id="streak-start-button" onclick="startTimer()">Start</button>
-            </div>
+            <%- include("partials/sidebar.ejs") %>
         </div>
 
         <?xml version="1.0" encoding="UTF-8" standalone="no"?>
@@ -1101,7 +1092,7 @@
                     }
                     time--;
                 }, 1000);
-            }
+        }
 
         function resetCountries() {
             fetch("/reset", {
@@ -1112,6 +1103,8 @@
                 startButton.classList.toggle("hidden");
             }, 3000);
         }
+
+        startTimer();
     </script>
 </body>
 </html>

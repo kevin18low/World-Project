@@ -9,7 +9,7 @@ const db = new pg.Client({
     user: "postgres",
     host: "localhost",
     database: "world",
-    password: "PostGres**",
+    password: "**",
     port: 5432
 });
 
@@ -52,6 +52,12 @@ app.get("/hotstreak", (req, res) => {
     res.render("modes.ejs", {
         mode: "hotstreak"
     });
+})
+
+app.get("/start-hotstreak", async (req, res) => {
+    // res.render("partials/sidebar.ejs", {
+    //     hotstreak: true
+    // });
 })
 
 app.post("/submit", async (req, res) => {
