@@ -12,9 +12,25 @@
     <form id="hotstreak" action="/hotstreak" method="get">
         <button id="hotstreak-button" class="gamemode">HotStreak</button>
     </form>
-    <div id="timer-container">
-        <h2 id="timer"></h2>
-        <button id="streak-start-button" onclick="startTimer()">Start</button>
-    </div>
+    <h2 id="timer"></h2>
+    <button id="streak-start-button" onclick="startTimer()">Play HotStreak</button>
+
+    <script>
+        function startTimer() {
+            const startButton = document.getElementById("streak-start-button");
+            const timer = document.getElementById("timer");
+            startButton.classList.toggle("hidden");
+            let time = 10;
+            var countdown = setInterval(() => {
+                timer.innerHTML = time;
+                if (time == 0) {
+                    clearInterval(countdown);
+                    timer.innerHTML = "Game over!";
+                    resetCountries();
+                }
+                time--;
+            }, 1000);
+        }
+    </script>
 </body>
 </html>

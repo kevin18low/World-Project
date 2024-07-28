@@ -1078,22 +1078,6 @@
             document.getElementById(code).style.fill = "#769AFF";
         });
 
-        function startTimer() {
-                const startButton = document.getElementById("streak-start-button");
-                const timer = document.getElementById("timer");
-                startButton.classList.toggle("hidden");
-                let time = 10;
-                var countdown = setInterval(() => {
-                    timer.innerHTML = time;
-                    if (time == 0) {
-                        clearInterval(countdown);
-                        timer.innerHTML = "Game over!";
-                        resetCountries();
-                    }
-                    time--;
-                }, 1000);
-        }
-
         function resetCountries() {
             fetch("/reset", {
                 method: "POST"
@@ -1103,8 +1087,6 @@
                 startButton.classList.toggle("hidden");
             }, 3000);
         }
-
-        startTimer();
     </script>
 </body>
 </html>

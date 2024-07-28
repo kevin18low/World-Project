@@ -63,7 +63,7 @@ app.get("/start-hotstreak", async (req, res) => {
 app.post("/submit", async (req, res) => {
     try {
         const result = await db.query(
-            "SELECT country_code FROM countries WHERE LOWER(country_name) = LOWER($1) OR LOWER(country_name) LIKE '%' || LOWER($1) || '%'",
+            "SELECT country_code FROM countries WHERE LOWER(country_name) = LOWER($1) OR LOWER(country_name) LIKE '%' || LOWER($1) || '%' ORDER BY LENGTH(country_name)",
             [req.body.country]
         );
         const country = result.rows[0].country_code;

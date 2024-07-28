@@ -16,11 +16,12 @@
                 Get ready for HotStreak!<br><br>
                 You have 10 seconds to make a valid country guess. Every time you guess correctly, the timer
                 resets. If the tier hits 0, the game will end and your progress will be reset.
-                Correctly guessed countries will be highlighted on the map and will increase your score.<br><br>
+                Correctly guessed countries will be highlighted on the map and will increase your score.<br>
+                Press 'Play HotStreak' on the home screen to start!<br><br>
                 Good luck!
             </p>
-            <form id="hotstreak-start" action="/start-hotstreak" method="get">
-                <button>Start</button>
+            <form id="hotstreak-start" action="/" method="get">
+                <button>Home</button>
             </form>
         <% } else { %>
             <p class="intro">
@@ -30,7 +31,7 @@
                 Good luck!
             </p>
             <form id="classic-start" action="/" method="get">
-                <button>Start</button>
+                <button>Home</button>
             </form>
         <% } %>
         
