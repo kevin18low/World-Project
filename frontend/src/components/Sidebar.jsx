@@ -30,7 +30,13 @@ function Sidebar() {
 
     function handleStart() {
         setStartTimer(true);
-        localStorage.setItem('timeStarted', 'true')
+        localStorage.setItem('timeStarted', 'true');
+    }
+
+    function stopTimer() {
+        setStartTimer(false);
+        localStorage.setItem('timeStarted', 'false');
+        setTime(10);
     }
 
     function resetCountries() {
@@ -64,6 +70,7 @@ function Sidebar() {
             <button id="hotstreak-button" name="hotstreak" className="gamemode" onClick={handleGamemode}>HotStreak</button>  
             <button id="streak-start-button" onClick={handleStart}>Play HotStreak</button>
             <h3 id="timer">{time}</h3>
+            <button id="stop-button" onClick={stopTimer}>Stop Streak</button>
             <h3 id="info" className="hidden">{gamemode}</h3>
         </div>
     )

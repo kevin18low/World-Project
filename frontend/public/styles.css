@@ -49,6 +49,15 @@
     align-self: center;
 }
 
+#stop-button {
+    width: 90%;
+    height: fit-content;
+    margin-top: 20px;
+    font-weight: bold;
+    background-color: #f4273f;
+    align-self: center;
+}
+
 #timer {
     width: fit-content;
     color: white;
