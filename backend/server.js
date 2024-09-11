@@ -59,7 +59,7 @@ app.post("/submit", async (req, res) => {
             console.log(err);
             const countries = await getGuessedCountries();
             const total = await getTotalCountries();
-            res.send({
+            res.json({
                 countries: countries,
                 guessed: countries.length,
                 total: total,
@@ -70,7 +70,7 @@ app.post("/submit", async (req, res) => {
         console.log(err);
         const countries = await getGuessedCountries();
         const total = await getTotalCountries();
-        res.send({
+        res.json({
             countries: countries,
             guessed: countries.length,
             total: total,
