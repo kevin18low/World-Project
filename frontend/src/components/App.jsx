@@ -5,6 +5,13 @@ import Header from "./Header";
 
 function App() {
     const [data, setData] = useState([{}]);
+    const [time, setTime] = useState(10);
+    const [startTimer, setStartTimer] = useState(false);
+    const [currentMode, setCurrentMode] = useState("classic");
+
+    function resetTimer() {
+        setTime(10);
+    }
 
     useEffect(() => {
         fetch("/api").then(
@@ -15,8 +22,13 @@ function App() {
     }, [])
 
     useEffect(() => {
+        const paths = document.querySelectorAll("svg path");
+        paths.forEach(path => {
+            path.style.fill = "#616161";
+        });
+
         if (data && data.countries) {
-            data.countries.forEach((code) => {
+            data.countries.forEach(code => {
                 const element = document.getElementById(code);
                 if (element) {
                     element.style.fill = "#769AFF";
@@ -27,9 +39,25 @@ function App() {
 
     return (
         <div id="main-container" className="container">
-            <Header guesses={data.guessed} total={data.total} error={data.error} />
+            <Header 
+                guesses={data.guessed}
+                total={data.total}
+                guessData={data}
+                setData={setData} 
+                error={data.error}
+                resetTimer={resetTimer}
+                currentMode={currentMode}
+            />
             <Map />
-            <Sidebar />
+            <Sidebar 
+                time={time}
+                setTime={setTime}
+                startTimer={startTimer}
+                setStartTimer={setStartTimer}
+                resetTimer={resetTimer}
+                currentMode={currentMode}
+                setCurrentMode={setCurrentMode}
+            />
         </div>
     )
 };

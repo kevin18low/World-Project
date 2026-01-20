@@ -1,22 +1,16 @@
 import React, {useState, useEffect} from "react";
 
-function Sidebar() {
+function Sidebar({ time, setTime, startTimer, setStartTimer, resetTimer, currentMode, setCurrentMode }) {
     const [gamemode, setGamemode] = useState("");
-    const [time, setTime] = useState(10);
-    const [startTimer, setStartTimer] = useState(() => {
-        const savedState = localStorage.getItem('timeStarted');
-        return savedState === 'true';
-    });
 
     useEffect(() => {
-        if (!startTimer) return;
+        if (!startTimer || currentMode !== "hotstreak") return;
 
         const interval = setInterval(() => {
             setTime(prevTime => {
                 if (prevTime === 0) {
                   resetCountries();
                   clearInterval(interval);
-                  localStorage.setItem('timeStarted', 'false');
                   setTime("Game Over!");
                   return 0;
                 } else {
@@ -29,13 +23,13 @@ function Sidebar() {
     }, [startTimer]);
 
     function handleStart() {
-        setStartTimer(true);
-        localStorage.setItem('timeStarted', 'true');
+        if (currentMode === "hotstreak") {
+            setStartTimer(true);
+        }
     }
 
     function stopTimer() {
         setStartTimer(false);
-        localStorage.setItem('timeStarted', 'false');
         setTime(10);
     }
 
@@ -50,6 +44,7 @@ function Sidebar() {
 
     function handleGamemode(event) {
         const name = event.target.name;
+        setCurrentMode(name);
         const classic = "In Classic mode, you have unlimited time! Test your knowledge of the world in a stress free environment.";
         const streak = "In Hotstreak, you have 10 seconds for each guess. Guessing a country correctly resets the timer and gives you another 10 seconds. See if you can handle the pressure!";
         if (name === "classic") {

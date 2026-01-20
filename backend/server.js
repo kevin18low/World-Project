@@ -17,6 +17,9 @@ const db = new pg.Client({
 
 db.connect();
 
+app.use(express.json());
+app.use(express.static("../frontend/public"));
+
 async function getGuessedCountries() {
     let countries = [];
     const result = await db.query("SELECT country FROM guessed_countries");
@@ -30,9 +33,6 @@ async function getTotalCountries() {
     const result = await db.query("SELECT country_name FROM countries");
     return result.rows.length;
 }
-
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.static("../frontend/public"));
 
 app.get("/api", async (req, res) => {
     const countries = await getGuessedCountries();
@@ -51,10 +51,17 @@ app.post("/submit", async (req, res) => {
             "SELECT country_code FROM countries WHERE LOWER(country_name) = LOWER($1) OR LOWER(country_name) LIKE '%' || LOWER($1) || '%' ORDER BY LENGTH(country_name)",
             [req.body.country]
         );
-        const country = result.rows[0].country_code;
+        const country = result.rows[0]?.country_code;
+        if (!country) throw new Error("dne");
         try {
             await db.query("INSERT INTO guessed_countries (country) VALUES ($1)", [country]);
-            res.redirect("/");
+            const countries = await getGuessedCountries();
+            const total = await getTotalCountries();
+            res.json({
+                countries: countries,
+                guessed: countries.length,
+                total: total
+            });
         } catch (err) {
             console.log(err);
             const countries = await getGuessedCountries();
@@ -81,7 +88,11 @@ app.post("/submit", async (req, res) => {
 
 app.post("/reset", async (req, res) => {
     await db.query("TRUNCATE guessed_countries");
-    res.redirect("/");
+    res.json({
+        countries: [],
+        guessed: 0,
+        total: await getTotalCountries()
+    });
 });
 
 app.listen(port, () => {

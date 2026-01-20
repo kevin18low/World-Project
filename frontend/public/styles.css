@@ -1,5 +1,5 @@
 * {
-    font-family: "Playwrite AU VIC", cursive;
+    font-family: "Charis SIL", serif;
 }
 
 #forms {
@@ -134,5 +134,4 @@ path {
     grid-area: sidebar;
     width: 200px;
     align-self: center;
-    margin: 0;
 }
