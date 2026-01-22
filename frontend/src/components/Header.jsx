@@ -47,7 +47,7 @@ function Header({guesses, total, guessData, setData, resetTimer, currentMode}) {
                         autoFocus
                         placeholder="Enter a country name"
                     />
-                    <button type="submit">Submit</button>
+                    <button type="submit" id="submit-guess">Submit</button>
                 </form>
 
                 <button id="restart" onClick={handleReset}>
